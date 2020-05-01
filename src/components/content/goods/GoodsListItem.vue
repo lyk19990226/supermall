@@ -1,13 +1,11 @@
 <template>
-    <div class="goods-item">
-        <a :href="goodsItem.link">
-            <img :src="goodsItem.show.img" alt="">
+    <div class="goods-item" @click="itemClick">
+            <img :src="showImage" alt="" @load="imageLoad"><!-- @load 在Vue中 是用来监听图片加载完成的事件 -->
             <div class="goods-info">
                  <p>{{goodsItem.title}}</p>
                 <span class="price">{{'￥'+goodsItem.price}}</span>
                 <span class="collect">{{goodsItem.cfav}}</span>
             </div>
-        </a>
     </div>
 </template>
 <script>
@@ -20,6 +18,22 @@ export default {
                 return[]
             }
         }
+    },
+    computed:{
+        showImage(){
+          return this.goodsItem.image || this.goodsItem.show.img 
+        }
+    },
+    methods:{ 
+      imageLoad(){//在Vue的原型中加入$bus，并将$bus赋为一个Vue实例，我们就可以间接的通过Vue实例来发出请求，并监听请求了（解决滚动时一卡一卡的bug）
+        this.$bus.$emit('itemImageLoad')
+        // console.log(this.$bus)
+        // console.log('我调用了')
+      },
+      itemClick(){
+        console.log('跳转详情页')
+        this.$router.push('/detail/'+ this.goodsItem.iid)
+      }
     }
 }
 </script>

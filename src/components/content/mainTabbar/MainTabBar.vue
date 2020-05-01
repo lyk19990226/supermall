@@ -1,5 +1,5 @@
 <template>
-     <tab-bar>
+     <tab-bar class="tab-bar">
         <tab-bar-item path="/home" activeColor="deepPink">
             <img slot="item-icon" src="~assets/img/tabbar/home.svg" >    
             <img slot="item-icon-active" src="~assets/img/tabbar/home_active.svg" >  
@@ -10,7 +10,7 @@
             <img slot="item-icon"  src="~assets/img/tabbar/category.svg" >  
             <img slot="item-icon-active"  src="~/assets/img/tabbar/category_active.svg" >  
             <div slot="item-text">分类</div>
-        </tab-bar-item>
+        </tab-bar-item> 
 
         <tab-bar-item path="/cart" activeColor="deepPink">
             <img slot="item-icon"  src="~assets/img/tabbar/shopcart.svg" >  
@@ -42,5 +42,7 @@ export default {
 </script>
 
 <style scoped>
-
+.tab-bar{
+    z-index: 9;
+}
 </style>

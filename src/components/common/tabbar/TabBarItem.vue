@@ -13,7 +13,7 @@
              <slot name="item-text"></slot>
           </div>
         </div>
-</template>
+</template> 
 <script>
 export default {
   name:'TabBarItem',

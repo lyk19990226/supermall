@@ -117,7 +117,7 @@ export default {
                 this.goods[type].list.push(...res.data.list)
                 this.goods[type].page += 1
 
-                this.$refs.scroll.finishPullUp()//上拉加载更多
+                this.$refs.scroll.finishPullUp()//上拉加载更多，执行多次
             })
         },
         // 监听点击返回顶部的组件
@@ -136,7 +136,7 @@ export default {
             this.isTabFixed = (-position.y) > this.tabOffsetTop
         },
         loadMore(){
-            // console.log('上拉加载更多home')
+            // console.log('上拉加载更多home') //只能执行一次上拉加载
             this.getHomeGoods(this.currentType)
         },
         swiperImageLoad(){

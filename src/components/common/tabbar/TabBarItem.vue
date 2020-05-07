@@ -53,7 +53,7 @@ export default {
    text-align:center;
    height:49px;
    font-size:14px;
-   margin-top:3px;
+   padding-top:3px;
 }
 .tab-bar-item img{
     height: 24px;

@@ -22,7 +22,7 @@ export default {
         return {
             currentIndex:0,
         }
-    },
+    }, 
     methods:{
         itemClick(index){
             this.currentIndex = index

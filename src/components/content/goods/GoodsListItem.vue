@@ -11,7 +11,7 @@
 <script>
 export default {
     name:'GoodsListItem',
-    props:{
+    props:{ 
         goodsItem:{
             type:Object,
             default(){
@@ -21,7 +21,7 @@ export default {
     },
     computed:{
         showImage(){
-          return this.goodsItem.image || this.goodsItem.show.img 
+          return this.goodsItem.image || this.goodsItem.img || this.goodsItem.show.img 
         }
     },
     methods:{ 
@@ -32,7 +32,11 @@ export default {
       },
       itemClick(){
         console.log('跳转详情页')
-        this.$router.push('/detail/'+ this.goodsItem.iid)
+        if(this.goodsItem.iid){
+          this.$router.push('/detail/'+ this.goodsItem.iid)
+        }else {
+          this.$router.push('/detail/'+ this.goodsItem.item_id)
+        }
       }
     }
 }

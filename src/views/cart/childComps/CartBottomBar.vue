@@ -56,22 +56,24 @@ import { mapGetters } from 'vuex'
         totalPrice() {
             return "￥" + this.cartList.filter(item => {
                 return item.checked
-            }).reduce((preValue, item) => {
-                return preValue + item.price * item.count
+            }).map(item => {
+                return item.price * item.count
+            }).reduce((preValue, sub) => {
+                return preValue + sub
             },0).toFixed(2)
         },
         checkLength() {
             return this.cartList.filter(item => item.checked).length
         },
         isSelectAll() {
-            if(this.cartList.length === 0) return false
+            if(this.cartList.length === 0) return false//默认购物车没有商品时，全选按钮不被选中
             // 1.filter方法
             // return !(this.cartList.filter(item => !item.checked).length)
             // 2.find方法
             // return !this.cartList.find(item => !item.checked)
             // 3.普通遍历方法
             for(let item of this.cartList) {
-                if(!item.checked){
+                if(!item.checked){//如果有一个商品没有被选中，则全选按钮也不会被选中
                     return false
                 }
             }
